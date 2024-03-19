@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
-// import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  Button,
+  ActivityIndicator,
   FlatList,
   StyleSheet,
   Text,
-  TextInput,
   View,
 } from "react-native";
+import Products from "../components/Products";
+import { saveProducts } from "../redux_store/actions";
 
 const Home = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const fetchAPI = () => {
     const apiURL = "https://fakestoreapi.com/products";
@@ -29,9 +30,9 @@ const Home = ({ navigation }) => {
       })
       .then((data) => {
         if (data !== undefined) {
-          // dispatch(saveProducts(data));
+          dispatch(saveProducts(data));
           setIsLoading(false);
-          console.log(`Data received from response`);
+          console.warn(`Data received from response`);
         } else {
           console.log(`No data received from response`);
         }
@@ -41,13 +42,12 @@ const Home = ({ navigation }) => {
 
   useEffect(() => {
     fetchAPI();
-    // dispatch();
   }, []);
 
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Home page</Text>
-      <FlatList data={{}} />
+      {isLoading ? <ActivityIndicator /> : <Products />}
     </View>
   );
 };

@@ -1,8 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// import { Provider } from "react-redux";
-// import { store } from "./redux_store/store/index";
+import { Provider } from "react-redux";
+import { store } from "./redux_store/store/index";
 import Home from "./screens/Home";
 import Cart from "./screens/Cart";
 import Login from "./screens/Login";
@@ -30,20 +30,20 @@ const App = () => {
   });
 
   return (
-    // <Provider store={store}>
-    <NavigationContainer>
-      <StatusBar style="dark" />
-      <Stack.Navigator>
-        <Stack.Group screenOptions={headerOptions}>
-          <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Cart" component={Cart} />
-          <Stack.Screen name="Login" component={Login} />
-          <Stack.Screen name="Register" component={Register} />
-          <Stack.Screen name="Product" component={Product} />
-        </Stack.Group>
-      </Stack.Navigator>
-    </NavigationContainer>
-    // </Provider>
+    <Provider store={store}>
+      <NavigationContainer>
+        <StatusBar style="dark" />
+        <Stack.Navigator>
+          <Stack.Group screenOptions={headerOptions}>
+            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name="Cart" component={Cart} />
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Register" component={Register} />
+            <Stack.Screen name="Product" component={Product} />
+          </Stack.Group>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 };
 
