@@ -47,7 +47,7 @@ const Home = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Home page</Text>
-      {isLoading ? <ActivityIndicator /> : <Products />}
+      {isLoading ? <ActivityIndicator size={"large"} /> : <Products />}
     </View>
   );
 };

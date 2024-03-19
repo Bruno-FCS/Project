@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList, Image } from "react-native";
 import { useSelector } from "react-redux";
 
 const Products = () => {
@@ -7,9 +7,9 @@ const Products = () => {
 
   const renderPrizeItem = ({ item }) => (
     <View style={styles.listItem}>
+      <Image source={{ uri: item.image }} style={{ width: 150, height: 200 }} />
       <Text style={styles.year}>{item.title}</Text>
       <Text style={styles.year}>{item.price}</Text>
-      <Text style={styles.year}>{item.description}</Text>
     </View>
   );
 
